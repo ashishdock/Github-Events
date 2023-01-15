@@ -4,6 +4,13 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'dev-*' # this doesn't allow slashes. eg. dev-new  dev-this-is-new
+      - 'feat/**' # 2 asterisks mean that the branch names can have any number of slashes feat/new  feat/new/page/widget
+    paths-ignore:
+      - '.github/worhflows/*'
 
 jobs:
   deploy:
